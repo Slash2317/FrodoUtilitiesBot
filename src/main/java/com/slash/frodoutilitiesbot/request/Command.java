@@ -17,22 +17,31 @@ public enum Command {
     MEMBER_INFO("f!member info", SERVER, "Provides information about a certain user", 0, List.of("user")),
     SERVER_INFO("f!server info", SERVER, "Provides server information"),
     ECHO("f!echo", FUN, "Says the requested content", 0, List.of("message")),
-    COIN_FLIP("f!coinflip", FUN, "Flips a coin", 0),
-    ROLL_DICE("f!rolldice", FUN, "Rolls a coin", 0),
-    HELP("f!help", MISC, "Shows list of commands");
+    ROCK_PAPER_SCISSORS("f!rps", FUN, "Play RPS with the bot", 0, List.of("rock/paper/scissors")),
+    ROCK_PAPER_SCISSORS_LIZARD_SPOCK("f!rpsls", FUN, "Play RPSLS with the bot", 0, List.of("rock/paper/scissors/lizard/spock"), true),
+    COIN_FLIP("f!flipcoin", FUN, "Flips a coin"),
+    ROLL_DICE("f!rolldice", FUN, "Rolls a dice (default 6 sides)", 0, List.of("sides:6")),
+    HELP("f!help", MISC, "Shows list of commands"),
+    INVITE("f!invite", MISC, "Shows link to invite the bot");
 
     private final String commandName;
     private final String description;
     private final List<String> parameters;
     private final int suffixLength;
     private final CommandGroup commandGroup;
+    private final boolean hidden;
 
-    Command(String commandName, CommandGroup commandGroup, String description, int suffixLength, List<String> parameters) {
+    Command(String commandName, CommandGroup commandGroup, String description, int suffixLength, List<String> parameters, boolean hidden) {
         this.commandName = commandName;
         this.commandGroup = commandGroup;
         this.description = description;
         this.parameters = parameters;
         this.suffixLength = suffixLength;
+        this.hidden = hidden;
+    }
+
+    Command(String commandName, CommandGroup commandGroup, String description, int suffixLength, List<String> parameters) {
+        this(commandName, commandGroup, description, suffixLength, parameters, false);
     }
 
     Command(String commandName, CommandGroup commandGroup, String description, int suffixLength) {
@@ -61,6 +70,10 @@ public enum Command {
 
     public int getSuffixLength() {
         return suffixLength;
+    }
+
+    public boolean isHidden() {
+        return hidden;
     }
 
     public boolean isPrefix() {
