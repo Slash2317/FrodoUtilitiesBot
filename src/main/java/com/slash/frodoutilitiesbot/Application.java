@@ -22,7 +22,7 @@ public class Application {
             FrodoUtilitiesBotListener frodoUtilitiesBotListener = new FrodoUtilitiesBotListener();
 
             JDABuilder.createDefault(props.getProperty("token"))
-                    .setActivity(Activity.playing("Join Schoolrooms"))
+                    .setActivity(Activity.playing("f!help | bit.ly/tiziland_dis"))
                     .enableIntents(GatewayIntent.GUILD_MEMBERS)
                     .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                     .addEventListeners(frodoUtilitiesBotListener)

@@ -2,6 +2,8 @@ package com.slash.frodoutilitiesbot;
 
 import com.slash.frodoutilitiesbot.handler.*;
 import com.slash.frodoutilitiesbot.request.RequestContext;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -9,7 +11,9 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FrodoUtilitiesBotListener extends ListenerAdapter {
@@ -61,7 +65,15 @@ public class FrodoUtilitiesBotListener extends ListenerAdapter {
         String command = event.getName();
 
         if (command.equals("help")) {
-            event.reply("This bot doesn't support slash commands. Please use the f! prefix e.g. f!help").queue();
+            EmbedBuilder embedBuilder = new EmbedBuilder();
+            embedBuilder.setColor(Color.decode("#a020f0"))
+                    .setDescription("""
+                        **Welcome!** :smiley:
+                        Currently, this bot, Frodo Utilities, does **not** support slash commands for coding and modifying to be easier.
+                        Instead, please use the prefix `f!` in all your commands. For example, f!help.
+                        **For the actual commands list, please use the f!help command in any chat this bot is enabled on.**""");
+
+            event.replyEmbeds(embedBuilder.build()).setAllowedMentions(Collections.emptyList()).queue();
         }
     }
 
