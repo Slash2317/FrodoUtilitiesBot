@@ -151,6 +151,10 @@ public class MiscRequestHandler {
                 Permission.USE_APPLICATION_COMMANDS
         );
 
-        requestContext.event().getChannel().sendMessage(inviteUrl).queue();
+        requestContext.event().getChannel().sendMessage("""
+                Here is our bot invite link! :smiley:
+                We're glad to hear you want to invite Frodo Utilities in your Discord Server, thank you so much!
+                :link: BOT INVITE LINK: http://bit.ly/frodoutilitiesinvite
+                :question: Having Trouble? Try this link instead:  [INVITE](""" + inviteUrl + ")").queue();
     }
 }

@@ -22,6 +22,7 @@ public enum Command {
     COIN_FLIP("f!flipcoin", FUN, "Flips a coin"),
     ROLL_DICE("f!rolldice", FUN, "Rolls a dice (default 6 sides)", 0, List.of("sides:6")),
     HELP("f!help", MISC, "Shows list of commands"),
+    SLASH_HELP("/help", MISC, "Alternative Help command which explains we only support f! prefix."),
     INVITE("f!invite", MISC, "Shows link to invite the bot");
 
     private final String commandName;
